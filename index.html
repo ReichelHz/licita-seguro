@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LicitaSeguro</title>
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="#">LicitaSeguro</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegación">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#licitaciones">Licitaciones</a></li>
+          <li class="nav-item"><a class="nav-link" href="#proveedores">Proveedores</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <main class="container my-4">
+
+    <!-- Home -->
+    <section id="home" class="mb-5">
+      <h1 class="mb-3">Bienvenido a LicitaSeguro</h1>
+      <p>Tu plataforma confiable para consultar licitaciones públicas en Chile.</p>
+    </section>
+
+    <!-- Licitaciones -->
+    <section id="licitaciones" class="mb-5">
+      <h2 class="mb-3">Listado de Licitaciones</h2>
+
+      <!-- Filtros -->
+      <form id="form-filtros" class="row g-3 mb-3">
+  <div class="col-md-4">
+    <label for="fecha" class="form-label">Fecha</label>
+    <input type="date" class="form-control" id="fecha" name="fecha" required />
+  </div>
+  <div class="col-md-4">
+    <label for="estado" class="form-label">Estado</label>
+    <select class="form-select" id="estado" name="estado" required>
+      <option value="" disabled selected>Seleccione un estado...</option>
+      <option value="5">Desierta</option>
+      <option value="6">Adjudicada</option>
+      <option value="7">Revocada</option>
+      <option value="8">Suspendida</option>
+      <option value="15">En evaluación</option>
+      <option value="16">Cerrada</option>
+    </select>
+  </div>
+  <div class="col-md-4 d-flex align-items-end">
+    <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+  </div>
+</form>
+
+
+      <!-- Resultados de licitaciones -->
+      <div id="resultados-licitaciones">
+        <!-- Aquí se mostrarán las licitaciones con JS -->
+      </div>
+    </section>
+
+    <!-- Proveedores -->
+    <section id="proveedores" class="mb-5">
+      <h2 class="mb-3">Buscar Proveedor por RUT</h2>
+
+      <form id="form-proveedor" class="row g-3 mb-3">
+        <div class="col-md-6">
+          <label for="rut" class="form-label">
+            RUT del proveedor
+            <small class="text-muted">(Ingrese el RUT sin puntos y con guión)</small>
+          </label>
+          <input type="text" class="form-control" id="rut" placeholder="Ej: 77653382-3" />
+        </div>
+        <div class="col-md-6 d-flex align-items-end">
+          <button type="submit" class="btn btn-primary w-100">Buscar</button>
+        </div>
+      </form>
+
+      <div id="resultado-proveedor">
+        <!-- Aquí se mostrarán los datos del proveedor -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bootstrap JS (Popper + Bootstrap) -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+  <!-- Tu JS -->
+  <script src="app.js"></script>
+</body>
+</html>
