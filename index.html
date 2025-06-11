@@ -1,104 +1,177 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LicitaSeguro</title>
-  <!-- Bootstrap CSS CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LicitaSeguro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="styles.css" /> 
+
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
-      <a class="navbar-brand" href="#">LicitaSeguro</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegación">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="#home">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#licitaciones">Licitaciones</a></li>
-          <li class="nav-item"><a class="nav-link" href="#proveedores">Proveedores</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#" id="logo-link">LicitaSeguro</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home" id="link-inicio" aria-current="page">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#licitaciones" id="link-licitaciones">Licitaciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#proveedores" id="link-proveedores">Proveedores</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <!-- Contenido principal -->
-  <main class="container my-4">
+    <main class="container my-4" tabindex="-1">
 
-    <!-- Home -->
-    <section id="home" class="mb-5">
-      <h1 class="mb-3">Bienvenido a LicitaSeguro</h1>
-      <p>Tu plataforma confiable para consultar licitaciones públicas en Chile.</p>
-    </section>
+        <section id="home" class="mb-5">
+            <div class="banner-custom container">
+                <h1>Bienvenido a LicitaSeguro</h1>
+                <p>
+                    LicitaSeguro es una compañía dedicada a facilitar información transparente y accesible sobre licitaciones públicas en Chile. Actualmente, no cuenta con un portal propio; todas las búsquedas de licitaciones se realizan directamente en la plataforma de Mercado Público.
+                </p>
+            </div>
+        </section>
 
-    <!-- Licitaciones -->
-    <section id="licitaciones" class="mb-5">
-      <h2 class="mb-3">Listado de Licitaciones</h2>
 
-      <!-- Filtros -->
-      <form id="form-filtros" class="row g-3 mb-3">
-  <div class="col-md-4">
-    <label for="fecha" class="form-label">Fecha</label>
-    <input type="date" class="form-control" id="fecha" name="fecha" required />
-  </div>
-  <div class="col-md-4">
+        <section id="licitaciones" class="mb-5">
+            <h2 class="titulo-seccion mb-3 text-start">Listado de Licitaciones</h2>
+
+            <form id="form-filtros" novalidate>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="fecha" class="form-label">Fecha</label>
+                        <input type="date" class="form-control" id="fecha" name="fecha" aria-describedby="fechaHelp" />
+                    </div>
+                    <div class="col-md-6">
     <label for="estado" class="form-label">Estado</label>
-    <select class="form-select" id="estado" name="estado" required>
-      <option value="" disabled selected>Seleccione un estado...</option>
-      <option value="5">Desierta</option>
-      <option value="6">Adjudicada</option>
-      <option value="7">Revocada</option>
-      <option value="8">Suspendida</option>
-      <option value="15">En evaluación</option>
-      <option value="16">Cerrada</option>
+    <select class="form-select" id="estado" name="estado" aria-describedby="estadoHelp">
+        <option value="" selected>Todos los estados</option>
+        <option value="5">Desierta</option>
+        <option value="6">Adjudicada</option>
+        <option value="7">Revocada</option>
+        <option value="8">Suspendida</option>
+        <option value="15">En evaluación</option>
+        <option value="16">Cerrada</option>
+        <option value="17">Publicada</option>  <option value="18">Cancelada</option>
     </select>
-  </div>
-  <div class="col-md-4 d-flex align-items-end">
-    <button type="submit" class="btn btn-primary w-100">Filtrar</button>
-  </div>
-</form>
+</div>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-start">
+                        <button type="submit" class="btn-custom">Filtrar</button> 
+                    </div>
+                </div>
+            </form>
 
+            <div id="loader" class="text-primary my-3 d-none" role="status" aria-live="polite" aria-atomic="true">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Cargando licitaciones...
+            </div>
 
-      <!-- Resultados de licitaciones -->
-      <div id="resultados-licitaciones">
-        <!-- Aquí se mostrarán las licitaciones con JS -->
-      </div>
-    </section>
+            <div id="mensaje-licitaciones" aria-live="polite" aria-relevant="additions"></div>
 
-    <!-- Proveedores -->
-    <section id="proveedores" class="mb-5">
-      <h2 class="mb-3">Buscar Proveedor por RUT</h2>
+            <div id="resultados-licitaciones" class="list-group" aria-live="polite" aria-relevant="additions"></div>
 
-      <form id="form-proveedor" class="row g-3 mb-3">
-        <div class="col-md-6">
-          <label for="rut" class="form-label">
-            RUT del proveedor
-            <small class="text-muted">(Ingrese el RUT sin puntos y con guión)</small>
-          </label>
-          <input type="text" class="form-control" id="rut" placeholder="Ej: 77653382-3" />
+            <div id="paginacion-licitaciones" class="d-flex justify-content-center mt-3" aria-live="polite"></div>
+        </section>
+
+        <section id="proveedores" class="mb-5">
+            <h2 class="titulo-seccion mb-3">Buscar Proveedor por RUT</h2>
+
+            <form id="form-proveedor" class="row g-3 mb-3" novalidate>
+                <div class="col-md-6">
+                    <label for="rut" class="form-label">
+                        RUT del proveedor
+                        <small class="text-muted">(Ingrese el RUT sin puntos y con guión. Ej: 77653382-3)</small>
+                    </label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="rut"
+                        name="rut"
+                        placeholder="Ej: 77653382-3"
+                        required
+                        pattern="^\d{7,8}-[\dkK]$"
+                        title="Formato: 12345678-9 o 1234567-K"
+                        autocomplete="off"
+                        aria-describedby="rutHelp"
+                    />
+                </div>
+                <div class="col-md-6 d-flex align-items-end">
+                    <button type="submit" class="btn-custom">Buscar</button> 
+                </div>
+            </form>
+
+            <div id="resultado-proveedor" aria-live="polite" aria-relevant="additions"></div>
+        </section>
+
+    </main>
+
+    <footer class="bg-primary text-white text-center py-3 mt-auto">
+        <div class="container">
+            <small>
+                &copy; 2025 LicitaSeguro. Todos los derechos reservados.<br />
+                Plataforma dedicada a entregar acceso transparente a licitaciones públicas en Chile.
+            </small>
         </div>
-        <div class="col-md-6 d-flex align-items-end">
-          <button type="submit" class="btn btn-primary w-100">Buscar</button>
+    </footer>
+
+    <div class="modal fade" id="detalleLicitacionModal" tabindex="-1" aria-labelledby="detalleLicitacionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detalleLicitacionModalLabel">Detalle de Licitación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="detalle-licitacion-loader" class="text-primary my-3 text-center" role="status" aria-live="polite" style="display:none;">
+                        <span class="spinner-border" aria-hidden="true"></span>
+                        <span class="ms-2">Cargando detalles de licitación...</span>
+                    </div>
+                    <div id="detalle-licitacion-body">
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
         </div>
-      </form>
+    </div>
 
-      <div id="resultado-proveedor">
-        <!-- Aquí se mostrarán los datos del proveedor -->
-      </div>
-    </section>
 
-  </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="app.js"></script>
 
-  <!-- Bootstrap JS (Popper + Bootstrap) -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script>
+        // Recarga la página al hacer click en "LicitaSeguro"
+        document.getElementById('logo-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            location.reload();
+        });
 
-  <!-- Tu JS -->
-  <script src="app.js"></script>
+        // Scroll suave para los enlaces de navegación
+        document.getElementById('link-inicio').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+        });
+        document.getElementById('link-licitaciones').addEventListener('click', function(e) {
+            e.preventDefault(); 
+            document.getElementById('licitaciones').scrollIntoView({ behavior: 'smooth' });
+        });
+        document.getElementById('link-proveedores').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('proveedores').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+
 </body>
 </html>
